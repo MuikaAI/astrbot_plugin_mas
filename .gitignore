@@ -205,3 +205,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# AstrBot 在仓库目录内运行/导入时产生的运行时数据
+/data/

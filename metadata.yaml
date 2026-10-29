@@ -1,6 +1,6 @@
 name: astrbot_plugin_mas
 display_name: Muika-After-Story
-desc: Muika-After-Story 在 AstrBot 中的适配器，可以获得与本体一致的对话效果
-version: v1.4.0
+desc: Muika-After-Story 的 AstrBot IPC 适配器，连接独立部署的 MAS Core 进程
+version: v2.0.0
 author: Muika
 repo: https://github.com/MuikaAI/astrbot_plugin_mas

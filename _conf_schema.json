@@ -1,47 +1,38 @@
 {
-  "master_id": {
-    "description": "主账号 ID，用于主动对话",
+  "core_ws_url": {
+    "description": "MAS Core 的 WebSocket 入口（含 /ws 路径）。多设备部署时填常驻 Gateway 地址。",
     "type": "string",
-    "default": ""
+    "default": "ws://127.0.0.1:8765/ws"
   },
-  "butler_provider": {
-    "_special": "select_provider",
-    "description": "管家 Agent 使用的 LLM 模型，用于执行工具调用（截图、文件操作等）。留空则使用对话模型。",
-    "type": "string",
-    "default": ""
-  },
-  "summarize_provider": {
-    "_special": "select_provider",
-    "description": "会话摘要使用的 LLM 模型。留空则使用管家模型或对话模型。",
-    "type": "string",
-    "default": ""
-  },
-  "max_memory_records": {
-    "description": "最大记忆记录数(最近的N条对话)",
-    "type": "int",
-    "default": 100
-  },
-  "fs_allowed_paths": {
-    "description": "文件操作白名单目录列表。空列表时文件系统工具全部禁用。\n示例: [\"D:/Documents\", \"D:/Downloads\"]",
+  "core_fallback_urls": {
+    "description": "备用入口列表，主入口不可用时轮询重试，恢复后自动切回主入口。",
     "type": "list",
     "items": {
       "type": "string"
     },
     "default": []
   },
-  "enable_file_write": {
-    "description": "开启文件写入/删除操作。需同时在 fs_allowed_paths 中声明目标目录。",
-    "type": "bool",
-    "default": false
+  "ipc_secret": {
+    "description": "与 Core 的 .env 中 IPC_SECRET 一致的预共享密钥。",
+    "type": "string",
+    "default": ""
   },
-  "enable_code_execution": {
-    "description": "开启 Python 子进程代码执行能力。存在一定安全风险，请确认后再启用。",
-    "type": "bool",
-    "default": false
+  "client_name": {
+    "description": "本适配器在 Core 中的唯一名称，多个 Bot 连同一 Core 时不得重复。",
+    "type": "string",
+    "default": "astrbot"
   },
-  "enable_shell_execution": {
-    "description": "开启 Shell 命令执行（PowerShell/Bash/Cmd）。存在一定安全风险，请确认后再启用。",
-    "type": "bool",
-    "default": false
+  "master_id": {
+    "description": "主人账号的平台用户 ID。只有该用户的消息会被转发给 Muika；留空则插件保持静默。",
+    "type": "string",
+    "default": ""
+  },
+  "takeover_group_umos": {
+    "description": "额外接管的群聊会话列表（unified_msg_origin，如 aiocqhttp:GroupMessage:12345）。主人的所有私聊默认接管；群聊中仅转发主人被唤醒（@机器人或唤醒前缀）的消息。",
+    "type": "list",
+    "items": {
+      "type": "string"
+    },
+    "default": []
   }
 }
