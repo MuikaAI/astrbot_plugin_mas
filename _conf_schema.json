@@ -1,11 +1,13 @@
 {
   "core_ws_url": {
-    "description": "MAS Core 的 WebSocket 入口（含 /ws 路径）。多设备部署时填常驻 Gateway 地址。",
+    "description": "Core 入口",
+    "hint": "MAS Core 的 WebSocket 地址（含 /ws 路径）。多设备部署时填常驻 Gateway 地址。",
     "type": "string",
     "default": "ws://127.0.0.1:8765/ws"
   },
   "core_fallback_urls": {
-    "description": "备用入口列表，主入口不可用时轮询重试，恢复后自动切回主入口。",
+    "description": "备用入口",
+    "hint": "主入口不可用时轮询重试的地址列表，恢复后自动切回。",
     "type": "list",
     "items": {
       "type": "string"
@@ -13,22 +15,26 @@
     "default": []
   },
   "ipc_secret": {
-    "description": "与 Core 的 .env 中 IPC_SECRET 一致的预共享密钥。",
+    "description": "IPC 密钥",
+    "hint": "与 Core 的 .env 中 IPC_SECRET 一致的预共享密钥。",
     "type": "string",
     "default": ""
   },
   "client_name": {
-    "description": "本适配器在 Core 中的唯一名称，多个 Bot 连同一 Core 时不得重复。",
+    "description": "适配器名",
+    "hint": "本适配器在 Core 中的唯一名称，多个 Bot 连同一 Core 时不得重复。",
     "type": "string",
     "default": "astrbot"
   },
   "master_id": {
-    "description": "主人账号的平台用户 ID。只有该用户的消息会被转发给 Muika；留空则插件保持静默。",
+    "description": "主人用户 ID",
+    "hint": "主人账号的平台用户 ID。只有该用户的消息会被转发给 Muika；留空则插件保持静默。",
     "type": "string",
     "default": ""
   },
   "takeover_group_umos": {
-    "description": "额外接管的群聊会话列表（unified_msg_origin，如 aiocqhttp:GroupMessage:12345）。主人的所有私聊默认接管；群聊中仅转发主人被唤醒（@机器人或唤醒前缀）的消息。",
+    "description": "群聊白名单",
+    "hint": "额外接管的群聊会话列表（unified_msg_origin，如 aiocqhttp:GroupMessage:12345）。主人的所有私聊默认接管；群聊中仅转发主人 @机器人 的消息。",
     "type": "list",
     "items": {
       "type": "string"
